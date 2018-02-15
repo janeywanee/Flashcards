@@ -16,6 +16,10 @@ class GuessTest < MiniTest::Test
     assert_instance_of Guess, @guess_1
    end
 
+   def test_guess_has_a_card_method
+     assert  @guess_1.card
+   end
+
    def test_it_has_a_response
     assert_equal "Juneau", @guess_1.response
     assert_equal "Saturn", @guess_2.response
