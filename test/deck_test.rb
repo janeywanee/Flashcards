@@ -18,13 +18,11 @@ class DeckTest < MiniTest::Test
    end
 
    def test_deck_holds_cards
-     assert_equal [@card_1, @card_2, @card_3], Deck.cards
-     binding.pry
+     assert_equal [@card_1, @card_2, @card_3], @deck.cards
+   end
+
+   def test_count_cards_in_deck
+     assert_equal 3, @deck.count
    end
 
 end
-
-
-
-# deck.count
-# => 3
