@@ -5,13 +5,13 @@ require './lib/flashcards'
 require 'pry'
 
 class GuessTest < MiniTest::Test
-  def test_guess_test_exists
+   def test_guess_test_exists
     card_1 = Card.new("What is the capital of Alaska?", "Juneau")
     guess_1 = Guess.new("Juneau", card_1)
     assert_instance_of Guess, guess_1
-  end
+   end
 
-  def test_it_has_a_response
+   def test_it_has_a_response
 
     card_1 = Card.new("What is the capital of Alaska?", "Juneau")
     card_2 = Card.new("Which planet is closest to the sun?", "Mercury")
@@ -19,9 +19,9 @@ class GuessTest < MiniTest::Test
     guess_2 = Guess.new("Saturn", card_2)
     assert_equal "Juneau", guess_1.response
     assert_equal "Saturn", guess_2.response
-  end
+   end
 
-  def test_is_guess_correct
+   def test_is_guess_correct
 
     card_1 = Card.new("What is the capital of Alaska?", "Juneau")
     card_2 = Card.new("Which planet is closest to the sun?", "Mercury")
@@ -29,16 +29,16 @@ class GuessTest < MiniTest::Test
     guess_2 = Guess.new("Saturn", card_2)
     assert guess_1.correct?
     refute guess_2.correct?
-  end
+   end
 
-  def test_feedback
+   def test_feedback
     card_1 = Card.new("What is the capital of Alaska?", "Juneau")
     card_2 = Card.new("Which planet is closest to the sun?", "Mercury")
     guess_1 = Guess.new("Juneau", card_1)
     guess_2 = Guess.new("Saturn", card_2)
     assert_equal "Correct!", guess_1.feedback
     assert_equal "Incorrect!", guess_2.feedback
-  end
+   end
 end
 
 
