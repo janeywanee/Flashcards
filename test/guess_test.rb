@@ -32,6 +32,6 @@ class GuessTest < MiniTest::Test
 
    def test_feedback
     assert_equal "Correct!", @guess_1.feedback
-    assert_equal "Incorrect!", @guess_2.feedback
+    assert_equal "Incorrect.", @guess_2.feedback
    end
 end

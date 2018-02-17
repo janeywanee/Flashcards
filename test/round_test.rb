@@ -33,6 +33,7 @@ class RoundTest < MiniTest::Test
 
    def test_has_a_record_guess
      assert_equal "Juneau", @round.record_guess("Juneau")
+     assert_equal "93,000,000", @round.record_guess("93,000,000")
    end
 
    def test_count_guesses_in_round
@@ -46,12 +47,16 @@ class RoundTest < MiniTest::Test
    def test_has_feedback
       @round.record_guess("Juneau")
       assert_equal "Correct!",@round.guesses.first.feedback
+
+      @round.record_guess("10,000")
+      assert_equal "Incorrect.",@round.guesses.last.feedback
    end
 
    def test_correct_num_of_guesses
       @round.record_guess("Juneau")
       assert_equal 1, @round.number_correct
    end
+
 
  end
 
@@ -60,12 +65,9 @@ class RoundTest < MiniTest::Test
 
 
 
- # round.current_card
- # => #<Card:0x007ffdf1820a90 @answer="93,000,000", @question="Approximately how many miles are in one astronomical unit?">
- # round.record_guess("2")
- # => #<Guess:0x007ffdf19c8a00 @card=#<Card:0x007ffdf1820a90 @answer="93,000,000", @question="Approximately how many miles are in one astronomical unit?">, @response="2">
- # round.guesses.count
- # => 2
+
+
+
  # round.guesses.last.feedback
  # => "Incorrect."
  # round.number_correct
