@@ -4,6 +4,7 @@ class Round
   def initialize(deck)
     @deck = deck
     @guesses = []
+    @correct_guesses = 0
   end
 
   def current_card
@@ -17,9 +18,13 @@ class Round
 
   def guesses_count
     @guesses = 0
-    # @guesses.each do |i|
-      # if i.feedback == "Correct!"
-        # @guess_total += 1
-      # end
   end
+
+  def number_correct
+    number_correct = @guesses.find_all do |number|
+      number.correct?
+    end
+    @correct_guesses = number_correct.count
+  end
+
 end
