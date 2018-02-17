@@ -3,7 +3,7 @@ require 'minitest/pride'
 require './lib/round'
 require './lib/deck'
 require './lib/guess'
-require './lib/flashcards'
+require './lib/card'
 require 'pry'
 
 class RoundTest < MiniTest::Test
@@ -31,8 +31,14 @@ class RoundTest < MiniTest::Test
    end
 
    def test_has_a_record_guess
-     assert_equal , @round.record_guess
+     assert_equal "Juneau", @round.record_guess("Juneau")
    end
+
+   def test_count_guesses_in_round
+     @round.record_guess("Juneau")
+     assert_equal 1, @round.guesses.count
+   end
+
  end
 
 
@@ -40,14 +46,6 @@ class RoundTest < MiniTest::Test
 
 
 
-
- # round.record_guess("Juneau")
- # => #<Guess:0x007ffdf19c8a00 @card=#<Card:0x007ffdf1820a90 @answer="Juneau", @question="What is the capital of Alaska?">, @response="Juneau">
-
-
-
- # round.guesses.count
- # => 1
  # round.guesses.first.feedback
  # => "Correct!"
  # round.number_correct

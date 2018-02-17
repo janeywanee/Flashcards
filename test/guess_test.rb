@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/guess'
-require './lib/flashcards'
+require './lib/card'
 require 'pry'
 
 class GuessTest < MiniTest::Test

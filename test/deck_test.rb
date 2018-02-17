@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/deck'
 require './lib/guess'
-require './lib/flashcards'
+require './lib/card'
 require 'pry'
 
 class DeckTest < MiniTest::Test
@@ -24,5 +24,4 @@ class DeckTest < MiniTest::Test
    def test_count_cards_in_deck
      assert_equal 3, @deck.count
    end
-
-end
+ end
