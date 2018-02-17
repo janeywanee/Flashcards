@@ -5,10 +5,13 @@ class Round
     @deck = deck
     @guesses = []
     @correct_guesses = 0
+    @card_number = 0
   end
 
   def current_card
-    @deck.cards[guesses.length]
+    @current_card = @deck.cards[@card_number]
+    @card_number += 1
+    @current_card
   end
 
   def record_guess(response)

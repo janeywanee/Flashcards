@@ -28,6 +28,7 @@ class RoundTest < MiniTest::Test
 
    def test_round_has_a_current_card
      assert_equal @card_1 ,@round.current_card
+     assert_equal @card_2 ,@round.current_card
    end
 
    def test_has_a_record_guess
@@ -59,7 +60,6 @@ class RoundTest < MiniTest::Test
 
 
 
- # => 1
  # round.current_card
  # => #<Card:0x007ffdf1820a90 @answer="93,000,000", @question="Approximately how many miles are in one astronomical unit?">
  # round.record_guess("2")
