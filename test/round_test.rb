@@ -9,7 +9,8 @@ require 'pry'
 class RoundTest < MiniTest::Test
    def setup
      @card_1 = Card.new("What is the capital of Alaska?", "Juneau")
-     @card_2 = Card.new("Approximately how many miles are in one astronomical unit?", "93,000,000")
+     @card_2 = Card.new("Approximately how many miles are in one astronomical unit?",
+                        "93,000,000")
      @deck = Deck.new([@card_1, @card_2])
      @round = Round.new(@deck)
    end
@@ -55,8 +56,20 @@ class RoundTest < MiniTest::Test
    def test_correct_num_of_guesses
       @round.record_guess("Juneau")
       assert_equal 1, @round.number_correct
+
+      @round.record_guess("93,000,000")
+      assert_equal 2, @round.number_correct
    end
 
+   def test_it_can_generate_a_test_count
+     assert_equal"2", @round.record_guess("2")
+   end
+
+   def test_has_a_correct_percent
+     @round.record_guess("Juneau")
+     @round.record_guess("10,000")
+     assert_equal 50, @round.percent_correct
+   end
 
  end
 
@@ -68,9 +81,6 @@ class RoundTest < MiniTest::Test
 
 
 
- # round.guesses.last.feedback
- # => "Incorrect."
- # round.number_correct
- # => 1
+
  # round.percent_correct
  # => 50

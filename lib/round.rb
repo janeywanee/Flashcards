@@ -19,15 +19,15 @@ class Round
     response
   end
 
-  def guesses_count
-    @guesses = 0
-  end
-
   def number_correct
     number_correct = @guesses.find_all do |number|
       number.correct?
     end
     @correct_guesses = number_correct.count
+  end
+
+  def percent_correct
+    ((number_correct.to_f / @guesses.count) * 100).to_i
   end
 
 end
