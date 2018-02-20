@@ -1,26 +1,25 @@
-require "pry"
-class CardGenerator
-  attr_accessor :cards
+require './lib/card'
+require 'pry'
 
-  def initialize(file)
+class CardGenerator
+  attr_reader :cards, :data
+
+  def initialize(filename)
     @cards = []
-    File.open("card.txt", "r").each do |line|
-      data = line.split(/\n/)
-      question, answer = data.map{ |line| line.split(",") }.flatten
-      card = Card.new(question, answer)
-      @cards.push(card)
-    end
+    @data = []
+    @filename = filename
+  end
+
+  def parse_data
+    File.readlines(@filename).each do |line|
+      data << line.chomp.split(',')
+   end
+  end
+
+  def generate
+    parse_data
+    data.each do |question, answer|
+     cards << Card.new(question, answer)
+   end
   end
 end
-
-  # def create_cards
-  #   @create_card << Card.new(line)
-  # end
-
-
-
-
-# create a card generator class
-# have a method that returns an array of cards
-# in the method you will take the lines and create Cards
-# Card.new(line)
