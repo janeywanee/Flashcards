@@ -31,25 +31,21 @@ class Round
   end
 
   def start
-    def start
-    #    puts "Welcome! You're playing with 4 cards."
-    #    puts "-------------------------------------------------"
-    #
-    #    deck = Deck.new
-    #    round = Round.new(deck)
-    #
-    #   until round.card_number do
-    #     puts "This is card number #{round.current_card} out of 4."
-    #     puts "Question: What is 5 + 5?"
-    #     command = gets.chomp
-    #     if command == 10
-    #       puts "Correct!"
-    #     else
-    #       puts "Incorrect!"
-    #     end
-    #   end
-    #  end
-    # end
-  end
+       puts "Welcome! You're playing with #{deck.count} cards."
+       puts "-------------------------------------------------"
 
-end
+       deck = Deck.new
+       round = Round.new(deck)
+
+      until round.card_number do
+        puts "This is card number #{round.current_card} out of 4."
+        puts "Question: What is 5 + 5?"
+        command = gets.chomp
+        if command == 10
+          puts "Correct!"
+        else
+          puts "Incorrect!"
+        end
+        end
+      end
+  end

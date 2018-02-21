@@ -13,4 +13,4 @@ def start(round)
   round.start
 end
 
-start(round)
+# start(round)
