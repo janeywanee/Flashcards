@@ -15,8 +15,9 @@ class Round
   end
 
   def record_guess(response)
-    @guesses << Guess.new(response,current_card)
-    response
+    result = Guess.new(response, current_card)
+    @guesses << result
+    result
   end
 
   def number_correct
@@ -31,21 +32,23 @@ class Round
   end
 
   def start
-       puts "Welcome! You're playing with #{deck.count} cards."
-       puts "-------------------------------------------------"
-
-       deck = Deck.new
-       round = Round.new(deck)
-
-      until round.card_number do
-        puts "This is card number #{round.current_card} out of 4."
-        puts "Question: What is 5 + 5?"
-        command = gets.chomp
-        if command == 10
-          puts "Correct!"
-        else
-          puts "Incorrect!"
-        end
-        end
-      end
+    game_introduction
+    card_loop
   end
+
+  def game_introduction
+    puts "Welcome! You're playing with #{deck.count} cards."
+    puts "-------------------------------------------------"
+  end
+
+  def card_loop
+    @deck.cards.each.with_index(1) do |card, index|
+    puts "This is card number #{index} out of #{@deck.count}."
+    puts "Question: #{card.question}"
+    response = gets.strip
+    guess = record_guess(response)
+    puts guess.feedback
+    end
+  end
+
+end
